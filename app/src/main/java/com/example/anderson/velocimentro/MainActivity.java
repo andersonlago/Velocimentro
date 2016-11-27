@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @Override
     public void onLocationChanged(Location location) {
 
-        t.setText(String.valueOf(location.getSpeed()));
-
+        if (location.hasSpeed()) {
+            int speed = (int) ((location.getSpeed() * 3600) / 1000);
+            t.setText( String.valueOf(speed) + " km/h");
+        }
     }
 
     @Override
